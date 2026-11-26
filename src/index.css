@@ -1,0 +1,281 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-display: "Syne", "Plus Jakarta Sans", ui-sans-serif, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  html {
+    background-color: #050506;
+    color: #F4F1EA;
+    font-family: var(--font-sans);
+    scroll-behavior: auto;
+  }
+
+  body {
+    background-color: #050506;
+    color: #F4F1EA;
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background-color: #C8A46B;
+    color: #050506;
+  }
+}
+
+/* Custom subtle film grain overlay */
+.studio-grain {
+  background-image: radial-gradient(rgba(244, 241, 234, 0.045) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Marquee animation for section divider ribbons */
+@keyframes marquee-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 34s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Perspective utility for 3D hover cards */
+.perspective-stage {
+  perspective: 1200px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* Luminous intro emblem glow & floating orb animations */
+@keyframes aura-pulse {
+  0%, 100% {
+    opacity: 0.65;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes orb-float-a {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(36px, -28px, 0) scale(1.08);
+  }
+}
+
+@keyframes orb-float-b {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-40px, 24px, 0) scale(0.94);
+  }
+}
+
+@keyframes sheen-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scroll-cue-drop {
+  0% {
+    transform: translate3d(0, -100%, 0);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, 140%, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes scroll-glow-pulse {
+  0%, 100% {
+    opacity: 0.55;
+    transform: translate3d(0, 0, 0) scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: translate3d(0, 3px, 0) scale(1.08);
+  }
+}
+
+.animate-scroll-cue {
+  will-change: transform, opacity;
+  animation: scroll-cue-drop 1.65s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+.animate-scroll-glow {
+  will-change: transform, opacity;
+  animation: scroll-glow-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes streak-sweep-a {
+  0% {
+    transform: translate3d(-30%, -18%, 0) rotate(-28deg);
+    opacity: 0.15;
+  }
+  50% {
+    transform: translate3d(28%, 14%, 0) rotate(-28deg);
+    opacity: 0.55;
+  }
+  100% {
+    transform: translate3d(-30%, -18%, 0) rotate(-28deg);
+    opacity: 0.15;
+  }
+}
+
+@keyframes streak-sweep-b {
+  0% {
+    transform: translate3d(26%, 20%, 0) rotate(24deg);
+    opacity: 0.18;
+  }
+  50% {
+    transform: translate3d(-24%, -14%, 0) rotate(24deg);
+    opacity: 0.48;
+  }
+  100% {
+    transform: translate3d(26%, 20%, 0) rotate(24deg);
+    opacity: 0.18;
+  }
+}
+
+.animate-aura-pulse {
+  will-change: transform, opacity;
+  animation: aura-pulse 4.5s ease-in-out infinite;
+}
+
+.animate-orb-a {
+  will-change: transform;
+  animation: orb-float-a 11s ease-in-out infinite;
+}
+
+.animate-orb-b {
+  will-change: transform;
+  animation: orb-float-b 14s ease-in-out infinite;
+}
+
+.animate-sheen-rotate {
+  will-change: transform;
+  animation: sheen-rotate 16s linear infinite;
+}
+
+.animate-streak-a {
+  will-change: transform, opacity;
+  animation: streak-sweep-a 12s ease-in-out infinite;
+}
+
+.animate-streak-b {
+  will-change: transform, opacity;
+  animation: streak-sweep-b 15s ease-in-out infinite;
+}
+
+@keyframes god-ray-drift {
+  0%, 100% {
+    transform: translate3d(-8%, -4%, 0) rotate(-14deg) scale(1);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translate3d(8%, 4%, 0) rotate(-10deg) scale(1.08);
+    opacity: 0.85;
+  }
+}
+
+@keyframes rim-glow-pulse {
+  0%, 100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.92;
+  }
+}
+
+.animate-god-ray {
+  will-change: transform, opacity;
+  animation: god-ray-drift 9s ease-in-out infinite;
+}
+
+.animate-rim-glow {
+  will-change: opacity;
+  animation: rim-glow-pulse 4s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+  0%, 100% {
+    transform: translate3d(0, -6px, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, 7px, 0) scale(1.018);
+  }
+}
+
+.animate-logo-float {
+  will-change: transform;
+  animation: logo-float 5.6s ease-in-out infinite;
+}
+
+/* Scrollbar refinement */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050506;
+}
+::-webkit-scrollbar-thumb {
+  background: #232329;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C8A46B;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-aura-pulse,
+  .animate-orb-a,
+  .animate-orb-b,
+  .animate-sheen-rotate,
+  .animate-streak-a,
+  .animate-streak-b,
+  .animate-scroll-cue,
+  .animate-scroll-glow,
+  .animate-god-ray,
+  .animate-rim-glow,
+  .animate-logo-float {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
